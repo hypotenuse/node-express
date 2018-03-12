@@ -1,0 +1,39 @@
+<header class="header">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12" ng-controller="HeaderController">
+				<nav class="nav-content">
+					<div class="nav-brand">
+						<a href="/">
+							<img src="/images/logo/yatuta@93x13.png">
+						</a>
+					</div>
+					<div class="nav-items">
+						<ul>
+							<% if(user) { %>
+								<li>
+									<a href="<%= user.get('profileUrl') %>" target="_blank">
+										<img src="<%= user.get('profileImage') %>" width="30">
+										<%= user.get('displayName') %>
+									</a>
+								</li>
+							<% } %>
+
+							<% if(user) { %>
+								<li><a href="/chat">Чат</a></li>
+							<% } %>
+							
+							<% if(user) { %> 
+								<li ng-click="events.processLogout($event)"><a>Выйти</a></li>
+							<% } else { %>
+								<li>
+									<a href="/login"><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;Войти</a>
+								</li>
+							<% } %>
+						</ul>
+					</div>
+				</nav>
+			</div>
+		</div>
+	</div>
+</header>

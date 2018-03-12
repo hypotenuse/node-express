@@ -1,0 +1,119 @@
+<% layout('/layouts/page') -%>
+<% block('scripts').append('<script type="text/javascript" src="/javascripts/angular/app/controllers/WsController.js"></script>') %>
+<% block('scripts').append('<script type="text/javascript" src="/javascripts/angular/app/controllers/ProfileController.js"></script>') %>
+<% block('scripts').append('<script type="text/javascript" src="/javascripts/angular/app/controllers/MessageBoxController.js"></script>') %>
+<% block('scripts').append('<script type="text/javascript" src="/javascripts/angular/app/controllers/PostBoxesController.js"></script>') %>
+<% block('scripts').append('<script type="text/javascript" src="/socket.io/socket.io.js"></script>') %>
+
+<section class="body">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div ng-controller="WsController">
+					<div ng-controller="ProfileController" class="profile"
+						ng-init="(vendorUser.identifier = '<%= user.get('identifier') %>');(vendorUser.provider = '<%= user.get('provider') %>');(vendorUser.displayName = '<%= user.get('displayName') %>');(vendorUser.profileUrl = '<%- user.get('profileUrl') %>');(vendorUser.profileImage = '<%- user.get('profileImage') %>')">
+						
+						<div class="row">
+							<div class="col-md-8 col-md-push-4">
+
+								<div class="message-box" ng-controller="MessageBoxController">
+									<form name="form-box">
+										<textarea name="message-text" placeholder="Написать сообщение ..." ng-model="models.messageText">
+										</textarea>
+										<div class="message-smile">
+										</div>
+									</form>
+									<button type="button" class="btn btn-primary btn-sm" ng-click="action.send($event)">
+										Отправить
+									</button>
+									<span class="rem">
+										Осталось 2500 символов
+									</span>
+								</div>
+
+								<div class="post-boxes" ng-controller="PostBoxesController">
+
+									<div class="post-box" ng-repeat="postbox in postboxes" ng-class="{'interlocutor': postbox.interlocutor}">
+
+										<div class="row" ng-if="postbox.interlocutor">
+											<div class="col-xs-12">
+												<div class="row">
+													<div class="col-xs-10">
+														<div class="post-date">{{postbox.postDate}}</div>
+														<div class="post-body">
+															<div class="post-text">{{postbox.postText}}</div>
+														</div>
+													</div>
+													<div class="col-xs-2">
+														<img width="50" ng-src="{{postbox.postImage}}">
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="row" ng-if="!postbox.interlocutor">
+											<div class="col-xs-12">
+												<div class="row">
+													<div class="col-xs-2">
+														<img width="50" ng-src="{{postbox.postImage}}">
+													</div>
+													<div class="col-xs-10 post-wrapper">
+														<div class="post-date">{{postbox.postDate}}</div>
+														<div class="post-body">
+															<div class="post-text">{{postbox.postText}}</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4 col-md-pull-8">
+								
+								<nav class="nav-profile">
+									<div class="user-info">
+										<a href="<%- user.get('profileUrl') %>" target="_blank">
+											<img width="35" src="<%- user.get('profileImage') %>">
+											<span>
+												<%= user.get('displayName') %>
+											</span>
+										</a>
+									</div>
+									<nav class="nav">
+										<ul>
+											<li>Собеседник</li>
+											<li>Предыдущие собеседники</li>
+										</ul>
+									</nav>
+								</nav>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+<script>
+
+ /*
+
+		document.onkeydown = submit.onclick = function(event) {
+			if (event.type == 'keydown') {
+				if (event.ctrlKey && event.keyCode == 13) {
+					formBox.submit()
+				}
+			}
+			else {
+				formBox.submit()
+			}
+		}
+
+	*/
+
+</script>

@@ -1,0 +1,36 @@
+{
+	"mongoose": {
+		"uri": "mongodb://localhost:27017/chat",
+		"options": {}
+	},
+	"session": {
+		"store": { "collection": "sessions" },
+		"name": "mjappssid",
+		"secret": "mjappssid-secret",
+		"cookie": { "path": "/", "secure": false, "httpOnly": true, "maxAge": 180000 }
+	},
+	"auth": {
+		"google": {
+			"clientID": "72499459489-lue7tgalu0rl8g3i2mbrm8bnonep52vo.apps.googleusercontent.com",
+			"clientSecret": "4dUeeQSlJLryM5330PW3kJEY",
+			"callbackURL": "http://localhost:3000/auth/google/callback"
+		},
+		"vk": {
+			"clientID": "5397773",
+			"clientSecret": "3mkHAiQNCGtQlH3EvERd",
+			"callbackURL": "http://localhost:3000/auth/vk/callback"
+		},
+		"facebook": {
+			"clientID": "742475199187947",
+			"clientSecret": "dbbe1f3019ec85a0d2fd4f13a5bbfe06",
+			"callbackURL": "http://localhost:3000/auth/facebook/callback",
+			"profileFields": "id,displayName,picture,gender,link"
+		},
+		"ok": {
+			"clientID": "1246699008",
+			"clientPublic": "CBAPBQELEBABABABA",
+			"clientSecret": "48122D4D21F059353BA10801",
+			"callbackURL": "http://localhost:3000/auth/ok/callback"
+		}
+	}
+}

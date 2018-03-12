@@ -1,0 +1,97 @@
+<% layout('/layouts/page') -%>
+<% block('scripts').append('<script type="text/javascript" src="/javascripts/angular/app/controllers/loginController.js"></script>') %>
+
+<section class="body">
+	<div class="container">
+
+		<div class="row">
+			<div class="col-md-12">
+				<div class="content-wrapper">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="enterbox">
+								<div class="note">
+									<span>
+										<h4>Регистрация</h4>
+									</span>
+								</div>
+								<form method="POST" action="/login/data">
+									<input type="text" name="name" style="padding: 15px; border: 0; border-image: none; width: 100%;" placeholder="Ваше имя">
+									<input type="text" name="email" style="padding: 15px; border: 0; border-image: none; width: 100%;" placeholder="E-mail">
+								</form>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="enterbox">
+								<div class="note">
+									<span>
+										<h4>Вход</h4>
+									</span>
+								</div>
+								<form method="POST" action="/login/data">
+									<input type="text" name="name" style="padding: 15px; border: 0; border-image: none; width: 100%;" placeholder="Ваше имя">
+									<input type="password" name="password" style="padding: 15px; border: 0; border-image: none; width: 100%;" placeholder="Пароль">
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12" ng-controller="LoginController">
+				<div class="content-wrapper">
+
+					<div class="enterbox">
+						<% if(!autherror) { %>
+							<div class="note">
+								<span><h4>Вы можете войти через сторонние сервисы</h4></span>
+								<div class="enterway">
+									<a href="/auth/google">
+										<div class="enterway-google">
+											<img src="/images/social/google/1x/google.png" width="25">
+											<span>
+												Google
+											</span>
+										</div>
+									</a>
+									<a href="/auth/vk">
+										<div class="enterway-vk">
+											<img src="/images/social/vk/vk.png" width="25">
+											<span>
+												Vk
+											</span>
+										</div>
+									</a>
+									<a href="/auth/facebook">
+										<div class="enterway-facebook">
+											<img src="/images/social/facebook/psd/facebook.png" width="25">
+											<span>
+												Facebook
+											</span>
+										</div>
+									</a>
+									<a href="/auth/ok">
+										<div class="enterway-ok">
+											<img src="/images/social/ok/ok.png" width="25">
+											<span>
+												Одноклассники
+											</span>
+										</div>
+									</a> 
+								</div>
+							</div>
+						<% } %>
+						<% if(autherror == 'nogender') { %>
+							<div class="note">
+								<i class="fa fa-info-circle"></i>
+								<span>
+									Ошибка. Для работы с сервисом необходимо знать Ваш пол. Укажите пол и попробуйте зайти еще.
+								</span>
+							</div>
+						<% } %>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,27 @@
+{
+  "name": "mj.ru",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "async": "~1.5.2",
+    "body-parser": "~1.13.2",
+    "connect-mongo": "~1.1.0",
+    "cookie-parser": "~1.3.5",
+    "debug": "~2.2.0",
+    "ejs-mate": "~2.3.0",
+    "ejs": "~2.3.3",
+    "errorhandler": "~1.4.3",
+    "express-session": "~1.13.0",
+    "express": "~4.13.1",
+    "morgan": "~1.6.1",
+    "mongodb": "~2.1.7",
+    "mongoose": "~4.4.7",
+    "nconf": "~0.8.4",
+    "passport": "~0.3.2",
+    "passport-google-oauth": "~1.0.0",
+    "serve-favicon": "~2.3.0"
+  }
+}
